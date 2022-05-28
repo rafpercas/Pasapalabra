@@ -17,11 +17,11 @@ public class PrimaryController {
     @FXML
     private void authenticate() throws IOException {
 
-        if(user.getText().equals("rafa") && password.getText().equals("123")){
-            App.setRoot("");
-        }else{
-            App.setRoot("");
-        }
+    if(user.getText().equals("rafa") && password.getText().equals("123")){
+        App.setRoot("logged");
+    }else{
+        App.setRoot("error");
+    }
     }
 
     @FXML
@@ -29,4 +29,5 @@ public class PrimaryController {
         user.setText("");
         password.setText("");
     }
+
 }

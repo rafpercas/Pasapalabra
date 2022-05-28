@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="263.0" prefWidth="339.0" styleClass="fondo" stylesheets="" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.proyectodual.pasapalabra.controller.PrimaryController">
+<AnchorPane prefHeight="263.0" prefWidth="339.0" styleClass="fondo" stylesheets="@static/css/estilo.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.proyectodual.pasapalabra.controller.PrimaryController">
     <children>
         <Button fx:id="logInButton" layoutX="61.0" layoutY="214.0" onAction="#authenticate" prefHeight="17.0" prefWidth="102.0" text="Log in" />
         <Button fx:id="resetButton" layoutX="170.0" layoutY="214.0" mnemonicParsing="false" onAction="#resetField" prefHeight="25.0" prefWidth="102.0" text="Reset" />
