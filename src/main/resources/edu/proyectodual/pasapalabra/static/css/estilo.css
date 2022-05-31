@@ -1,3 +1,7 @@
 .fondo{
-    -fx-background-color: white;
+    -fx-background-color: black;
+}
+
+.textoCyan{
+    -fx-text-fill: cyan;
 }

@@ -12,10 +12,9 @@ public class Ranking {
 
     @Override
     public String toString() {
-        return "Ranking{" +
-                "name='" + name + '\'' +
-                ", points=" + points +
-                '}';
+        return
+                "Nombre: " + name +
+                " - Puntuación: " + points+"\n";
     }
 
     public Ranking() {

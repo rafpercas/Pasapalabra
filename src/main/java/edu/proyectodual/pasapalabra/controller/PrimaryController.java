@@ -8,7 +8,7 @@ import javafx.scene.control.TextField;
 import java.io.IOException;
 
 public class PrimaryController {
-/*
+
     @FXML
     private TextField user;
     @FXML
@@ -16,12 +16,12 @@ public class PrimaryController {
 
    @FXML
     private void authenticate() throws IOException {
-
-    if(user.getText().equals("rafa") && password.getText().equals("123")){
+       App.setRoot("logeado");
+ /*   if(user.getText().equals("rafa") && password.getText().equals("123")){
         App.setRoot("logged");
     }else{
         App.setRoot("error");
-    }
+    }*/
     }
 
     @FXML
@@ -29,5 +29,5 @@ public class PrimaryController {
         user.setText("");
         password.setText("");
     }
-*/
+
 }
