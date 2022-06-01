@@ -1,26 +1,22 @@
-package edu.proyectodual.pasapalabra.dao;
+package edu.proyectodual.pasapalabra.service.dto;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import jakarta.xml.bind.annotation.XmlRootElement;
 
+@XmlRootElement
 public class Users {
+
     private String name;
     private String email;
     private String password;
 
-    public Users() {
-
+    @Override
+    public String toString() {
+        return "Users{" +
+                "name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", password=" + password +
+                '}';
     }
-    public Users(ResultSet result) {
-        try {
-            this.name = result.getString("name");
-            this.email = result.getString("email");
-            this.password = result.getString("password");
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
 
     public String getName() {
         return name;
@@ -44,5 +40,8 @@ public class Users {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Users() {
     }
 }

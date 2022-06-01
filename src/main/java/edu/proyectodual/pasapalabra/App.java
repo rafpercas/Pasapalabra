@@ -20,7 +20,7 @@ public class App extends Application {
     public void start(Stage stage) throws IOException {
         scene = new Scene(loadFXML("primary"));
         stage.setTitle("Pasapalabra");
-       stage.getIcons().add(new Image(App.class.getResourceAsStream("/edu/proyectodual/pasapalabra/static/img/pasapal.jpg")));
+       stage.getIcons().add(new Image(App.class.getResourceAsStream("/edu/proyectodual/pasapalabra/static/img/logo.jpg")));
         stage.setScene(scene);
         stage.show();
     }

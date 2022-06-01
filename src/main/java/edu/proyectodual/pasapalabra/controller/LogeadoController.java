@@ -26,5 +26,9 @@ public class LogeadoController {
     private void volverAlLogIn() throws IOException {
         App.setRoot("primary");
     }
+    @FXML
+    private void pasarAJugar() throws IOException {
+        App.setRoot("juego");
+    }
 
 }
