@@ -3,6 +3,7 @@ package edu.proyectodual.pasapalabra.controller;
 import edu.proyectodual.pasapalabra.App;
 import edu.proyectodual.pasapalabra.service.ClienteService;
 import edu.proyectodual.pasapalabra.service.ClienteWebService;
+import edu.proyectodual.pasapalabra.service.dto.Users;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -25,6 +26,7 @@ public class PrimaryController {
 
        if(new ClienteService(new ClienteWebService()).validateUsers(user.getText(), password.getText())){
            App.setRoot("logeado");
+           Users usuarioLogeado = new Users(user.getText());
        }else{
            label.setText("Usuario o contraseña incorrectos. Inténtelo de nuevo.");
        }

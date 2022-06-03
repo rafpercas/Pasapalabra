@@ -44,4 +44,8 @@ public class Users {
 
     public Users() {
     }
+
+    public Users(String name) {
+        this.name = name;
+    }
 }

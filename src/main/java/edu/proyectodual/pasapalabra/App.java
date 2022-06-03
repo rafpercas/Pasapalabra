@@ -18,11 +18,12 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("primary"));
+        scene = new Scene(loadFXML("juego"));
         stage.setTitle("Pasapalabra");
        stage.getIcons().add(new Image(App.class.getResourceAsStream("/edu/proyectodual/pasapalabra/static/img/logo.jpg")));
         stage.setScene(scene);
         stage.show();
+
     }
 
     public static void setRoot(String fxml) throws IOException {
