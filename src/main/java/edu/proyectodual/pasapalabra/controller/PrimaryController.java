@@ -40,5 +40,9 @@ public class PrimaryController {
         user.setText("");
         password.setText("");
     }
+    @FXML
+    private void recuperarCuenta() throws IOException {
+        App.setRoot("cuentaOlvidada");
+    }
 
 }

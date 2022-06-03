@@ -11,6 +11,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
 
 import java.io.IOException;
+import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 
 public class RegistroController {
     @FXML
@@ -32,27 +34,40 @@ public class RegistroController {
     @FXML
     private void registrarUser() {
 
-        if (!new ClienteService(new ClienteWebService()).validateUsers(usuario.getText(), contra.getText())) {
-            if (contra.getText().equals(repitContra.getText())) {
-                Users user = new Users();
-                user.setName(usuario.getText());
-                user.setEmail(email.getText());
-                user.setPassword(contra.getText());
-                new ClienteService(new ClienteWebService()).createUsers(user);
-                label.setTextFill(Color.GREEN);
-                label.setText("Usuario creado correctamente.");
-                usuario.setText("");
-                email.setText("");
-                contra.setText("");
-                repitContra.setText("");
+        if (new ClienteService(new ClienteWebService()).getUserByName(usuario.getText()).getPassword()==null) {
+            if(new ClienteService(new ClienteWebService()).getUserByEmail(email.getText()).getPassword()==null) {
+                if (contra.getText().equals(repitContra.getText())) {
+                    Users user = new Users();
+                    user.setName(usuario.getText());
+                    user.setEmail(email.getText());
+                    user.setPassword(contra.getText());
+                    System.out.println("llega aqui");
+                    Users usuariocreado = new ClienteService(new ClienteWebService()).createUsers(user);
+                    System.out.println(usuariocreado);
+                    if (usuariocreado == null) {
+                        label.setTextFill(Color.RED);
+                        label.setText("Ha habido un error al crear el usuario");
+                        System.out.println("llega");
+                        return;
+                    }
+                    label.setTextFill(Color.GREEN);
+                    label.setText("Usuario creado correctamente.");
+                    usuario.setText("");
+                    email.setText("");
+                    contra.setText("");
+                    repitContra.setText("");
 
-            } else {
+                } else {
+                    label.setTextFill(Color.RED);
+                    label.setText("Las contraseñas no coinciden");
+                }
+            }else{
                 label.setTextFill(Color.RED);
-                label.setText("Las contraseñas no coinciden");
+                label.setText("Ese correo ya está registrado.");
             }
-        }else{
+       } else {
             label.setTextFill(Color.RED);
-            label.setText("Ya existe un usuario con ese nombre.");
+            label.setText("Un usuario con ese nombre ya existe.");
         }
     }
 
