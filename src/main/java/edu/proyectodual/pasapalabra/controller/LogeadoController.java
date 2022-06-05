@@ -14,7 +14,7 @@ import java.util.List;
 
 public class LogeadoController {
     @FXML
-    private Label label;
+    private static Label labelUsuarioLogeado;
 
     @FXML
     private void verRanking() throws IOException {

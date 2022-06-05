@@ -89,6 +89,9 @@ public class JuegoController {
             ,"U","V","W","X","Y","Z"};
     List<Circle> circulos;
     int indiceLetras =0;
+    int[] letrasPasadas = new int[26];
+    int indiceLetrasPasadas =0;
+    int cojoLetrasPasadas =0;
     @FXML
     public void initialize(){
         label.setWrapText(true);
@@ -104,7 +107,10 @@ public class JuegoController {
     int contadorEnvios=0;
     @FXML
     private void comenzar() {
-
+        if(indiceLetras==26){
+            indiceLetras= letrasPasadas[cojoLetrasPasadas];
+            cojoLetrasPasadas++;
+        }
         listaLetra = j1.preguntasPorLetra(letras[indiceLetras]);
         System.out.println(listaLetra);
         System.out.println(listaLetra.get(0));
@@ -144,15 +150,26 @@ public class JuegoController {
     @FXML
     private void pasapalabra() {
         label2.setText("");
+        if(indiceLetras==26){
+            indiceLetras= letrasPasadas[cojoLetrasPasadas];
+            cojoLetrasPasadas++;
+        }
+        letrasPasadas[indiceLetrasPasadas]=indiceLetras;
+        indiceLetrasPasadas++;
         labelLetra.setText("Con la "+letras[indiceLetras]);
         indiceLetras++;
         comenzar();
+
     }
 
     @FXML
     private void comprobarRespuesta() {
         label2.setText("");
         contadorEnvios++;
+        if(indiceLetras==26){
+            indiceLetras= letrasPasadas[cojoLetrasPasadas];
+            cojoLetrasPasadas++;
+        }
         labelLetra.setText("Con la "+letras[indiceLetras]);
     circulos = Arrays.asList(circuloA,circuloB,circuloC,circuloD,circuloE,circuloF,circuloG,circuloH,circuloI,circuloJ,
             circuloK,circuloL,circuloM,circuloN,circuloO,circuloP,circuloQ,circuloR,circuloS,circuloT,circuloU,circuloV,circuloW,
@@ -174,6 +191,7 @@ public class JuegoController {
         }
         indiceLetras++;
         comenzar();
+
     }
 
 }

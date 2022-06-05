@@ -47,7 +47,7 @@
             <Cursor fx:constant="DEFAULT" />
          </cursor>
       </Label>
-      <Label fx:id="label" layoutX="155.0" layoutY="301.0" prefHeight="74.0" prefWidth="313.0" styleClass="textoCyan" stylesheets="@static/css/estilo.css" />
+      <Label fx:id="label" alignment="CENTER" contentDisplay="CENTER" layoutX="155.0" layoutY="301.0" prefHeight="74.0" prefWidth="313.0" styleClass="textoCyan" stylesheets="@static/css/estilo.css" />
       <Hyperlink layoutX="243.0" layoutY="301.0" onAction="#recuperarCuenta" text="Olvidé mi cuenta" textFill="WHITE">
          <font>
             <Font name="Arial" size="14.0" />

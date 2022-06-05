@@ -13,8 +13,9 @@ import java.io.IOException;
 import java.util.List;
 
 public class RankingController {
+
     @FXML
-    private TableView table;
+    private  TableView table;
 
     @FXML
     private void volver() throws IOException {
@@ -23,6 +24,7 @@ public class RankingController {
 
     @FXML
     private void verRanking() {
+
         List<Ranking> ranking = new ClienteService(new ClienteWebService()).getRanking();
         TableView tableView = new TableView();
 
@@ -39,12 +41,13 @@ public class RankingController {
         column2.setCellValueFactory(
                 new PropertyValueFactory<>("points"));
 
+        table.getColumns().clear();
 
         table.getColumns().add(column1);
         table.getColumns().add(column2);
         table.resizeColumn(column1,170);
         table.resizeColumn(column2,164);
-
+        table.getItems().clear();
         for (int i = 0; i < ranking.size(); i++) {
             table.getItems().add(ranking.get(i));
         }
