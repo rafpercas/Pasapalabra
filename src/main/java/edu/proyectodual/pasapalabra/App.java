@@ -15,15 +15,24 @@ import java.io.IOException;
 public class App extends Application {
 
     private static Scene scene;
+    private static String usuario;
 
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("juego"));
+        scene = new Scene(loadFXML("primary"));
         stage.setTitle("Pasapalabra");
        stage.getIcons().add(new Image(App.class.getResourceAsStream("/edu/proyectodual/pasapalabra/static/img/logo.jpg")));
         stage.setScene(scene);
         stage.show();
 
+    }
+
+    public static String getUsuario() {
+        return usuario;
+    }
+
+    public static void setUsuario(String usuario) {
+        App.usuario = usuario;
     }
 
     public static void setRoot(String fxml) throws IOException {

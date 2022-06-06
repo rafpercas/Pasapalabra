@@ -9,15 +9,17 @@
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.effect.Glow?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="fondo" stylesheets="@static/css/estilo.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.proyectodual.pasapalabra.controller.PrimaryController">
    <children>
-      <Label layoutX="264.0" layoutY="120.0" styleClass="textoCyan" text="Username" textOverrun="CLIP">
+      <Label layoutX="264.0" layoutY="120.0" text="Username" textFill="WHITE" textOverrun="CLIP">
          <font>
             <Font name="Arial Bold" size="16.0" />
          </font></Label>
-      <Label layoutX="264.0" layoutY="189.0" styleClass="textoCyan" text="Password" textOverrun="CLIP">
+      <Label layoutX="264.0" layoutY="189.0" text="Password" textFill="WHITE" textOverrun="CLIP">
          <font>
             <Font name="Arial Bold" size="16.0" />
          </font></Label>
@@ -36,7 +38,19 @@
          <font>
             <Font name="Arial Bold" size="13.0" />
          </font></Button>
-      <Label layoutX="202.0" layoutY="45.0" styleClass="textoCyan" stylesheets="@static/css/estilo.css" text="PASAPALABRA">
+      <Label fx:id="label" alignment="CENTER" contentDisplay="CENTER" layoutX="155.0" layoutY="301.0" prefHeight="74.0" prefWidth="313.0" styleClass="textoCyan" stylesheets="@static/css/estilo.css" />
+      <Hyperlink layoutX="243.0" layoutY="301.0" onAction="#recuperarCuenta" text="Olvidé mi cuenta" textFill="WHITE">
+         <font>
+            <Font name="Arial" size="14.0" />
+         </font>
+      </Hyperlink>
+      <Circle fill="DODGERBLUE" layoutX="198.0" layoutY="66.0" radius="37.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" />
+      <Text fill="WHITE" layoutX="187.0" layoutY="80.0" stroke="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="P">
+         <font>
+            <Font name="System Bold" size="36.0" />
+         </font>
+      </Text>
+      <Label layoutX="239.0" layoutY="45.0" stylesheets="@static/css/estilo.css" text="ASAPALABRA" textFill="WHITE">
          <font>
             <Font name="Comic Sans MS Bold" size="30.0" />
          </font>
@@ -47,12 +61,6 @@
             <Cursor fx:constant="DEFAULT" />
          </cursor>
       </Label>
-      <Label fx:id="label" alignment="CENTER" contentDisplay="CENTER" layoutX="155.0" layoutY="301.0" prefHeight="74.0" prefWidth="313.0" styleClass="textoCyan" stylesheets="@static/css/estilo.css" />
-      <Hyperlink layoutX="243.0" layoutY="301.0" onAction="#recuperarCuenta" text="Olvidé mi cuenta" textFill="WHITE">
-         <font>
-            <Font name="Arial" size="14.0" />
-         </font>
-      </Hyperlink>
 
    </children>
    <effect>

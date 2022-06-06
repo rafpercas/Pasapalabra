@@ -3,16 +3,17 @@ package edu.proyectodual.pasapalabra.controller;
 import edu.proyectodual.pasapalabra.App;
 import edu.proyectodual.pasapalabra.Juego;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.List;
+import java.net.URL;
+import java.util.*;
 
-public class JuegoController {
+public class JuegoController implements Initializable {
 
     @FXML
     private Label labelAciertos;
@@ -78,7 +79,6 @@ public class JuegoController {
     @FXML
     private Label label;
 
-
     @FXML
     private Label label2;
 
@@ -92,10 +92,8 @@ public class JuegoController {
     int[] letrasPasadas = new int[26];
     int indiceLetrasPasadas =0;
     int cojoLetrasPasadas =0;
-    @FXML
-    public void initialize(){
-        label.setWrapText(true);
-    }
+    Map<String,String> mapaSaltadas = new TreeMap<>();
+
     @FXML
     private void rendirse() throws IOException {
         App.setRoot("logeado");
@@ -108,6 +106,7 @@ public class JuegoController {
     @FXML
     private void comenzar() {
         if(indiceLetras==26){
+            System.out.println(mapaSaltadas.toString());
             indiceLetras= letrasPasadas[cojoLetrasPasadas];
             cojoLetrasPasadas++;
         }
@@ -118,32 +117,6 @@ public class JuegoController {
         label.setText(listaLetra.get(0));
         labelLetra.setText("Con la "+letras[indiceLetras]);
 
-       /* while(contadorEnvios<=26){
-            List<String> listaB = j1.preguntasPorLetra("b");
-
-        }*/
-
-
-
-/*
-        if (respuesta.getText().equals(listaA.get(1))) {
-            aciertos++;
-            labelAciertos.setText(String.valueOf(aciertos));
-            respuesta.setText("");
-            System.out.println("correcto");
-            circuloA.setFill(Color.GREEN);
-        } else if (pasapalabra()) {
-            respuesta.setText("");
-        } else if (!respuesta.getText().equals(listaA.get(1))) {
-            errores++;
-            labelErrores.setText(String.valueOf(errores));
-            respuesta.setText("");
-            circuloA.setFill(Color.RED);
-        }
-        List<String> listaB = j1.preguntasPorLetra("b");
-        label.setText(listaB.get(0));
-        labelAciertos.setText(String.valueOf(aciertos));
-        labelErrores.setText(String.valueOf(errores));*/
     }
 
 
@@ -151,12 +124,13 @@ public class JuegoController {
     private void pasapalabra() {
         label2.setText("");
         if(indiceLetras==26){
+
             indiceLetras= letrasPasadas[cojoLetrasPasadas];
             cojoLetrasPasadas++;
         }
+        mapaSaltadas.put(listaLetra.get(1),listaLetra.get(0));
         letrasPasadas[indiceLetrasPasadas]=indiceLetras;
         indiceLetrasPasadas++;
-        labelLetra.setText("Con la "+letras[indiceLetras]);
         indiceLetras++;
         comenzar();
 
@@ -170,19 +144,18 @@ public class JuegoController {
             indiceLetras= letrasPasadas[cojoLetrasPasadas];
             cojoLetrasPasadas++;
         }
-        labelLetra.setText("Con la "+letras[indiceLetras]);
     circulos = Arrays.asList(circuloA,circuloB,circuloC,circuloD,circuloE,circuloF,circuloG,circuloH,circuloI,circuloJ,
             circuloK,circuloL,circuloM,circuloN,circuloO,circuloP,circuloQ,circuloR,circuloS,circuloT,circuloU,circuloV,circuloW,
             circuloX,circuloY,circuloZ);
 
-        if(respuesta.getText().equals(listaLetra.get(1))){
+        if(respuesta.getText().toLowerCase(Locale.ROOT).equals(listaLetra.get(1))){
             label2.setText("");
             aciertos++;
             labelAciertos.setText(String.valueOf(aciertos));
             respuesta.setText("");
             System.out.println("correcto");
             circulos.get(indiceLetras).setFill(Color.GREEN);
-        }else if (!respuesta.getText().equals(listaLetra.get(1))) {
+        }else if (!respuesta.getText().toLowerCase(Locale.ROOT).equals(listaLetra.get(1))) {
             errores++;
             labelErrores.setText(String.valueOf(errores));
             respuesta.setText("");
@@ -194,6 +167,10 @@ public class JuegoController {
 
     }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        label.setWrapText(true);
+    }
 }
 
 

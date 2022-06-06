@@ -8,6 +8,7 @@ module edu.proyectodual.pasapalabra{
     requires java.mail;
     requires itextpdf;
 
+
     opens edu.proyectodual.pasapalabra to javafx.fxml;
     opens edu.proyectodual.pasapalabra.controller to javafx.fxml;
     exports edu.proyectodual.pasapalabra;

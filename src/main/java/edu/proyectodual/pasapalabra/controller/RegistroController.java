@@ -1,6 +1,7 @@
 package edu.proyectodual.pasapalabra.controller;
 
 import edu.proyectodual.pasapalabra.App;
+import edu.proyectodual.pasapalabra.excepciones.ExcepcionCampoVacio;
 import edu.proyectodual.pasapalabra.service.ClienteService;
 import edu.proyectodual.pasapalabra.service.ClienteWebService;
 import edu.proyectodual.pasapalabra.service.dto.Users;
@@ -33,42 +34,51 @@ public class RegistroController {
 
     @FXML
     private void registrarUser() {
+        try {
+            if (usuario.getText().equals("") || email.getText().equals("") || contra.getText().equals("")
+                    || repitContra.getText().equals("")) {
+                throw new ExcepcionCampoVacio("Debe rellenar los campos.");
 
-        if (new ClienteService(new ClienteWebService()).getUserByName(usuario.getText()).getPassword()==null) {
-            if(new ClienteService(new ClienteWebService()).getUserByEmail(email.getText()).getPassword()==null) {
-                if (contra.getText().equals(repitContra.getText())) {
-                    Users user = new Users();
-                    user.setName(usuario.getText());
-                    user.setEmail(email.getText());
-                    user.setPassword(contra.getText());
-                    System.out.println("llega aqui");
-                    Users usuariocreado = new ClienteService(new ClienteWebService()).createUsers(user);
-                    System.out.println(usuariocreado);
-                    if (usuariocreado == null) {
+            }
+            if (new ClienteService(new ClienteWebService()).getUserByName(usuario.getText()).getPassword() == null) {
+                if (new ClienteService(new ClienteWebService()).getUserByEmail(email.getText()).getPassword() == null) {
+                    if (contra.getText().equals(repitContra.getText())) {
+                        Users user = new Users();
+                        user.setName(usuario.getText());
+                        user.setEmail(email.getText());
+                        user.setPassword(contra.getText());
+                        System.out.println("llega aqui");
+                        Users usuariocreado = new ClienteService(new ClienteWebService()).createUsers(user);
+                        System.out.println(usuariocreado);
+                        if (usuariocreado == null) {
+                            label.setTextFill(Color.RED);
+                            label.setText("Ha habido un error al crear el usuario");
+                            System.out.println("llega");
+                            return;
+                        }
+                        label.setTextFill(Color.GREEN);
+                        label.setText("Usuario creado correctamente.");
+                        usuario.setText("");
+                        email.setText("");
+                        contra.setText("");
+                        repitContra.setText("");
+
+                    } else {
                         label.setTextFill(Color.RED);
-                        label.setText("Ha habido un error al crear el usuario");
-                        System.out.println("llega");
-                        return;
+                        label.setText("Las contraseñas no coinciden");
                     }
-                    label.setTextFill(Color.GREEN);
-                    label.setText("Usuario creado correctamente.");
-                    usuario.setText("");
-                    email.setText("");
-                    contra.setText("");
-                    repitContra.setText("");
-
                 } else {
                     label.setTextFill(Color.RED);
-                    label.setText("Las contraseñas no coinciden");
+                    label.setText("Ese correo ya está registrado.");
                 }
-            }else{
+            } else {
                 label.setTextFill(Color.RED);
-                label.setText("Ese correo ya está registrado.");
+                label.setText("Un usuario con ese nombre ya existe.");
             }
-       } else {
+        } catch (ExcepcionCampoVacio ecv) {
+            ecv.printStackTrace();
             label.setTextFill(Color.RED);
-            label.setText("Un usuario con ese nombre ya existe.");
+            label.setText("Debe rellenar los campos");
         }
     }
-
 }
