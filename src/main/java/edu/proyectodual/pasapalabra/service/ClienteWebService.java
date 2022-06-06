@@ -47,6 +47,11 @@ public class ClienteWebService {
                 .request(MediaType.APPLICATION_JSON)
                 .post(Entity.entity(users,MediaType.APPLICATION_JSON),Users.class);
     }
+    public Ranking createRanking(Ranking ranking)  {
+        return webTarget.path("ranking/addranking")
+                .request(MediaType.APPLICATION_JSON)
+                .post(Entity.entity(ranking,MediaType.APPLICATION_JSON),Ranking.class);
+    }
     public boolean validateUser(Users users){
         Response response = webTarget.path("users/validateuser")
                 .request(MediaType.APPLICATION_JSON)

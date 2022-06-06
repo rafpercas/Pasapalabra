@@ -7,7 +7,6 @@
 <AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="fondo" stylesheets="@static/css/estilo.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.proyectodual.pasapalabra.controller.RankingController">
    <children>
       <TableView fx:id="table" layoutX="51.0" layoutY="20.0" prefHeight="282.0" prefWidth="498.0" />
-      <Button layoutX="453.0" layoutY="343.0" mnemonicParsing="false" onAction="#volver" text="Volver" />
-      <Button layoutX="120.0" layoutY="343.0" mnemonicParsing="false" onAction="#verRanking" text="Mostrar" />
+      <Button layoutX="524.0" layoutY="349.0" mnemonicParsing="false" onAction="#volver" text="Volver" />
    </children>
 </AnchorPane>

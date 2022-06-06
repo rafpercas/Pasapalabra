@@ -43,6 +43,13 @@ public class ClienteService {
         return clienteWebService.createUser(user);
 
     }
+    public Ranking createRanking(Ranking ranking) {
+        Ranking rankingNuevo = new Ranking();
+        rankingNuevo.setName(ranking.getName());
+        rankingNuevo.setPoints(ranking.getPoints());
+        return clienteWebService.createRanking(rankingNuevo);
+
+    }
     public Users getUserByName(String name) {
         return clienteWebService.getUsersByName(name);
     }
