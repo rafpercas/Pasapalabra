@@ -30,21 +30,13 @@ public class CuentaOlvidadaController {
 
     @FXML
     private void enviar() throws IOException, DocumentException, URISyntaxException {
-        Users usuarioRecibido = new ClienteService(new ClienteWebService()).getUserByEmail(email.getText());
-        if (usuarioRecibido != null) {
-
-            PdfCreator pdfCreator = new PdfCreator();
-
-            pdfCreator.createPdf("datos_cuenta", "Nombre de usuario: " + usuarioRecibido.getName() + "\n" + "Contraseña: " + usuarioRecibido.getPassword());
-            //File archivo = new File("datos_cuenta");
-            Sender sender = new Sender();
-            String content = "Nombre de usuario: " + usuarioRecibido.getName() + "\n" + "Contraseña: " + usuarioRecibido.getPassword();
-            sender.send("proyectodualpasapalabra@gmail.com", email.getText(), "Recuperacion de cuenta", content );
+        Users usuarioRecibido = new ClienteService(new ClienteWebService()).enviarEmail(email.getText());
+        if (usuarioRecibido.getName()!=null) {
             label1.setTextFill(Color.GREEN);
-            label1.setText("El correo se ha enviado correctamente.");
+            label1.setText("Correo enviado.");
         } else {
             label1.setTextFill(Color.RED);
-            label1.setText("El correo indicado no existe.");
+            label1.setText("El correo indicado no está registrado.");
         }
     }
 

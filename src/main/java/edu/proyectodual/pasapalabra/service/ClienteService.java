@@ -28,6 +28,10 @@ public class ClienteService {
         return clienteWebService.getUsersByEmail(email);
     }
 
+    public Users enviarEmail(String email) {
+        return clienteWebService.enviarEmail(email);
+    }
+
     public boolean validateUsers(String name, String password) {
         Users user = new Users();
         user.setName(name);

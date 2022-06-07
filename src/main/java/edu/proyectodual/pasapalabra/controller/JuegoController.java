@@ -125,8 +125,8 @@ public class JuegoController implements Initializable {
         if(indiceLetras==26){
             botonRanking.setVisible(true);
             System.out.println(mapaSaltadas.toString());
-            indiceLetras= letrasPasadas[cojoLetrasPasadas];
-            cojoLetrasPasadas++;
+
+            labelLetra.setText("FIN DEL JUEGO.");
 
         }
         respuesta.setVisible(true);
@@ -148,8 +148,6 @@ public class JuegoController implements Initializable {
         label2.setText("");
         if(indiceLetras==26){
 
-            indiceLetras= letrasPasadas[cojoLetrasPasadas];
-            cojoLetrasPasadas++;
         }
         mapaSaltadas.put(listaLetra.get(1),listaLetra.get(0));
 
@@ -165,8 +163,7 @@ public class JuegoController implements Initializable {
         label2.setText("");
         contadorEnvios++;
         if(indiceLetras==26){
-            indiceLetras= letrasPasadas[cojoLetrasPasadas];
-            cojoLetrasPasadas++;
+
         }
     circulos = Arrays.asList(circuloA,circuloB,circuloC,circuloD,circuloE,circuloF,circuloG,circuloH,circuloI,circuloJ,
             circuloK,circuloL,circuloM,circuloN,circuloO,circuloP,circuloQ,circuloR,circuloS,circuloT,circuloU,circuloV,circuloW,
@@ -184,6 +181,7 @@ public class JuegoController implements Initializable {
             labelErrores.setText(String.valueOf(errores));
             respuesta.setText("");
             circulos.get(indiceLetras).setFill(Color.RED);
+            label2.setTextFill(Color.RED);
             label2.setText("La respuesta correcta era: "+listaLetra.get(1));
         }
         indiceLetras++;
@@ -194,7 +192,7 @@ public class JuegoController implements Initializable {
     public void addPuntuacionARanking(){
         Ranking ranking = new Ranking();
         ranking.setName(App.getUsuario());
-        ranking.setPoints(aciertos);
+        ranking.setPoints(aciertos-errores);
         System.out.println("llega aqui");
         Ranking rankingCreado = new ClienteService(new ClienteWebService()).createRanking(ranking);
         if (rankingCreado!= null) {

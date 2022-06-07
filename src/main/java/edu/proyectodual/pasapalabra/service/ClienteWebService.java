@@ -35,6 +35,12 @@ public class ClienteWebService {
                 .request(MediaType.APPLICATION_JSON)
                 .get(Users.class);
     }
+    public Users enviarEmail(String email) {
+
+        return webTarget.path("users/cuenta/"+email)
+                .request(MediaType.APPLICATION_JSON)
+                .get(Users.class);
+    }
     public Users getUsersByName(String name) {
 
         return webTarget.path("users/"+name)
