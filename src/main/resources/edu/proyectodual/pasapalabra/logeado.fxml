@@ -15,7 +15,7 @@
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Label>
-      <Label fx:id="labelUsuarioLogeado" alignment="CENTER" contentDisplay="CENTER" layoutX="29.0" layoutY="128.0" prefHeight="17.0" prefWidth="59.0" textFill="WHITE">
+      <Label fx:id="labelUsuarioLogeado" alignment="TOP_LEFT" layoutX="29.0" layoutY="128.0" prefHeight="38.0" prefWidth="166.0" textFill="WHITE">
          <font>
             <Font size="26.0" />
          </font></Label>

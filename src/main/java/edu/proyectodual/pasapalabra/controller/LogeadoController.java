@@ -20,7 +20,6 @@ public class LogeadoController implements Initializable {
     private Label labelUsuarioLogeado;
 
 
-
     @FXML
     private void verRanking() throws IOException {
         App.setRoot("ranking");
@@ -38,6 +37,7 @@ public class LogeadoController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        labelUsuarioLogeado.setWrapText(true);
         labelUsuarioLogeado.setText(App.getUsuario());
     }
 }
