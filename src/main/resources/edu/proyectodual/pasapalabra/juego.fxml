@@ -188,5 +188,10 @@
          </font></Label>
       <Label fx:id="errorPuntuaciones" alignment="CENTER" contentDisplay="CENTER" layoutX="215.0" layoutY="279.0" prefHeight="60.0" prefWidth="201.0" textFill="WHITE" />
       <Button fx:id="botonRanking" layoutX="472.0" layoutY="25.0" mnemonicParsing="false" onAction="#addPuntuacionARanking" text="Subir puntuación" />
+      <Label fx:id="labelFin" alignment="CENTER" contentDisplay="CENTER" layoutX="182.0" layoutY="155.0" prefHeight="74.0" prefWidth="253.0">
+         <font>
+            <Font size="28.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
